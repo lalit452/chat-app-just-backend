@@ -18,10 +18,18 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+// app.use(cors({ 
+//     origin: "https://chat-app-just-frontend.vercel.app",
+//     credentials: true
+// }))
+
 app.use(cors({ 
-    origin: "https://chat-app-just-frontend.vercel.app",
-    credentials: true
-}))
+    origin: "https://chat-app-just-frontend.vercel.app",  // Allow only frontend
+    credentials: true, // Allow cookies/auth headers
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow only necessary methods
+    allowedHeaders: ["Content-Type", "Authorization"] // Specify headers
+}));
+
 
 
 app.use("/api/auth", authRoutes);
