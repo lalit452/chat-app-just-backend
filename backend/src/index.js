@@ -29,7 +29,10 @@ app.use(cors({
 // }))
 
 
-app.use("/api/auth", authRoutes);
+// app.use("/api/auth", authRoutes);
+app.use("/api/auth", (req,res)=>{
+res.send("i am auth route");
+});
 app.use("/api/messages", messageRoutes);
 app.get("/", (req, res) => {
     res.send("Hello, the server is running!");
