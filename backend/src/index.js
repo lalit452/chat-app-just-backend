@@ -16,10 +16,17 @@ const PORT = process.env.PORT
 // this will allow you to extract json data out of body
 app.use(express.json()); 
 app.use(cookieParser());
-app.use(cors({ 
-    origin: "https://chat-app-just-frontend.vercel.app",
-    credentials: true
-}))
+
+app.use(cors({
+    origin: "*",  // Allow all origins
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+// app.use(cors({ 
+//     origin: "https://chat-app-just-frontend.vercel.app",
+//     credentials: true
+// }))
 
 
 app.use("/api/auth", authRoutes);
