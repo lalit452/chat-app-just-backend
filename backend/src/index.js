@@ -17,22 +17,14 @@ const PORT = process.env.PORT
 app.use(express.json()); 
 app.use(cookieParser());
 
-app.use(cors({
-    origin: "*",  // Allow all origins
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
-// app.use(cors({ 
-//     origin: "https://chat-app-just-frontend.vercel.app",
-//     credentials: true
-// }))
+
+app.use(cors({ 
+    origin: "https://chat-app-just-frontend.vercel.app",
+    credentials: true
+}))
 
 
-// app.use("/api/auth", authRoutes);
-app.use("/api/auth", (req,res)=>{
-res.send("i am auth route");
-});
+app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.get("/", (req, res) => {
     res.send("Hello, the server is running!");
