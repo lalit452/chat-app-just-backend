@@ -24,6 +24,10 @@ app.use(cors({
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.get("/", (req, res) => {
+    res.send("Hello, the server is running!");
+});
+
 
 // app.listen(PORT, ()=>{             <------------- app ko server se replace kar de to use socket.io
 server.listen(PORT, ()=>{
